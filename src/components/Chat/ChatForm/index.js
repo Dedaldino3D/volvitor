@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { FaImage } from "react-icons/fa";
+import { BsPaperclip, BsMicFill } from "react-icons/bs";
+import { MdSend } from "react-icons/md";
 
 const ChatFormContainer = styled.div`
   border-top: 1px solid #36404a;
@@ -48,13 +51,23 @@ const ChatFormContainer = styled.div`
   }
 
   .chat-col-auto {
-    fkex: 0 0 auto;
+    flex: 0 0 auto;
     width: auto;
     max-width: 100%;
 
     @media (min-width: 768px) {
       margin-left: 0.5rem;
     }
+  }
+`;
+
+const Button = styled.button`
+  background: transparent;
+  border: none;
+  margin: 8px;
+
+  svg {
+    font-size: 24px;
   }
 `;
 
@@ -67,14 +80,18 @@ const ChatForm = (props) => {
             <input type="text" placeholder="Enter Message..." />
           </div>
           <div className="chat-col-auto">
-            <ul>
-              <li style={{ display: "inline-block" }}>
-                <button type="button">{/* FaEmoji */}Emoji</button>
-                <button type="button">{/* FaAttachFiles */}Files</button>
-                <button type="button">{/* FaImage */}Images</button>
-                <button type="button">{/* FaSendMessage */}Send</button>
-              </li>
-            </ul>
+            <Button type="button">
+              <BsMicFill />
+            </Button>
+            <Button type="button">
+              <BsPaperclip />
+            </Button>
+            <Button type="button">
+              <FaImage />
+            </Button>
+            <Button type="button">
+              <MdSend style={{ color: "var(--cyan)" }} />
+            </Button>
           </div>
         </div>
       </form>
