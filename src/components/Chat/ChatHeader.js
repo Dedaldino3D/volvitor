@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { FaRegUser, FaVideo } from "react-icons/fa";
+import { MdMoreVert } from "react-icons/md";
 
 import Avatar from "../Avatar";
 
@@ -85,16 +87,25 @@ const ChatHeader = (props) => {
     <ChatHeaderContainer>
       <div>
         <UserChatDetails>
-          <Avatar online />
+          <Avatar width={40} online />
           <h5>Luciana Regrina</h5>
         </UserChatDetails>
         <ChatMoreInfo>
           <ul>
             <li style={{ display: "inline-block" }}>
-              <UserChatButton>{/* FaUser here */}Info</UserChatButton>
+              <UserChatButton>
+                <FaRegUser />
+              </UserChatButton>
             </li>
             <li style={{ display: "inline-block" }}>
-              <UserChatButton>{/* FaMoreHoriz */}More</UserChatButton>
+              <UserChatButton>
+                <FaVideo />
+              </UserChatButton>
+            </li>
+            <li style={{ display: "inline-block" }}>
+              <UserChatButton>
+                <MdMoreVert />
+              </UserChatButton>
             </li>
           </ul>
         </ChatMoreInfo>
