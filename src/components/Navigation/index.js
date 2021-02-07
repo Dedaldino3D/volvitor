@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import { FaRegUser, FaRegAddressBook, FaRegBell } from "react-icons/fa";
+import { BsGear, BsChatDots, BsPeople } from "react-icons/bs";
+
+import Logo from "../layout/Logo";
+import Avatar from "../Avatar";
 
 const HeaderContainer = styled.nav`
   min-width: 75px;
@@ -7,6 +12,7 @@ const HeaderContainer = styled.nav`
   min-height: 570px;
   background-color: #36404a;
   display: flex;
+  justify-content: space-between;
   z-index: 9;
   box-shadow: 0 2px 4px rgb(15 34 58 / 12%);
 
@@ -20,36 +26,74 @@ const HeaderContainer = styled.nav`
 `;
 
 const NavigationList = styled.ul`
-  justify-content: center !important;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
   flex-wrap: wrap;
   margin-bottom: 0;
   margin-top: 0;
   list-style: none;
   padding-left: 0;
+  justify-content: space-around;
+
+  .active {
+    background-color: #3e4a56;
+  }
 `;
 
 const NavigationItem = styled.li`
   margin: 7px 0;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e1e9f1;
+  border-radius: 8px;
+  width: 56px;
+  height: 56px;
+  line-height: 56px;
+
+  & > svg {
+    font-size: 20px;
+    vertical-align: middle;
+  }
 `;
 
 const Navigation = (props) => {
   return (
     <HeaderContainer>
       <NavigationList>
-        <NavigationItem>{/* FaUser here */}Info</NavigationItem>
-        <NavigationItem>{/* FaChat here */}Chats</NavigationItem>
-        <NavigationItem>{/* FaUsers/FaGroups here */}Groups</NavigationItem>
-        <NavigationItem>{/* FaContacts here */}Contacts</NavigationItem>
         <NavigationItem>
-          {/* FaProfile here */}Profile
-          {/* Dropdown menu */}
+          <Logo />
         </NavigationItem>
-        <NavigationItem>{/* FaCog here */}Settings</NavigationItem>
       </NavigationList>
-      {/* <NavigationList>
-      </NavigationList> */}
+      <NavigationList>
+        <NavigationItem>
+          <FaRegUser />
+        </NavigationItem>
+        <NavigationItem className="active">
+          <BsChatDots />
+        </NavigationItem>
+        <NavigationItem>
+          <BsPeople />
+        </NavigationItem>
+        <NavigationItem>
+          <FaRegAddressBook />
+        </NavigationItem>
+        <NavigationItem>
+          <FaRegBell />
+        </NavigationItem>
+        <NavigationItem>
+          <BsGear />
+        </NavigationItem>
+      </NavigationList>
+      <NavigationList>
+        <NavigationItem>
+          <Avatar width={35} />
+        </NavigationItem>
+      </NavigationList>
     </HeaderContainer>
   );
 };
