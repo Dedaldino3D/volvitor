@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import styled, { css } from "styled-components";
+import { FaPen } from "react-icons/fa";
+
 import noPhoto from "../../images/3dimg.jpg";
 
 const Container = styled.div`
@@ -38,6 +40,22 @@ export const UserStatus = styled.div`
   background: var(--green);
 `;
 
+const UserEdit = styled.div`
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  bottom: -2px;
+  right: -2px;
+  box-shadow: var(--bs-ud);
+  border-radius: 50%;
+  padding: 10px;
+  background: var(--chat-bg);
+
+  & > svg {
+    font-size: 20px;
+  }
+`;
+
 const Img = styled.img`
   width: ${(props) => `${props.width}px`};
   height: ${(props) => `${props.width}px`};
@@ -72,6 +90,11 @@ const Avatar = (props) => (
       card={props.card}
     />
     {props.online && <UserStatus />}
+    {!props.online && props.edit && (
+      <UserEdit>
+        <FaPen />
+      </UserEdit>
+    )}
   </Container>
 );
 
