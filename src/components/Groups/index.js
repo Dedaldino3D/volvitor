@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BsPeople } from 'react-icons/bs'
 
 import Avatar from "../Avatar";
 import { ChatSearch } from "../ChatList";
@@ -21,6 +22,7 @@ const Groups = (props) => {
     <GroupsContainer>
       <ChatHeader>
         <h4>Groups</h4>
+        <BsPeople/>
       </ChatHeader>
       <ChatSearch />
       <GroupList>

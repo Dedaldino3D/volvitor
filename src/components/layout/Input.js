@@ -9,6 +9,8 @@ const InputForm = styled.input`
   font-size: 0.875rem;
   line-height: 1.5;
   border-radius: 0.4rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   display: block;
   width: 100%;
   color: #9aa1b9;
@@ -67,10 +69,15 @@ const GroupPrepend = styled.div`
     :not(:disabled) {
       cursor: pointer;
     }
+
+    svg {
+      vertical-align: middle;
+    }
   }
 `;
 
 const Input = (props) => {
+  console.log("whats props: ", props);
   const ref = useRef();
 
   const handleBtnClick = useCallback(() => {
@@ -92,6 +99,7 @@ const Input = (props) => {
             onChange={props.onChange}
             onClick={props.onClick}
             onKeyPress={props.onKeyPress}
+            required={props.required}
           />
         </GroupPrepend>
       ) : (

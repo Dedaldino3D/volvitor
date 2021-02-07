@@ -4,6 +4,9 @@ export const RegisterContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 3rem;
   margin-bottom: 3rem;
 
   @media (min-width: 576px) {
@@ -12,6 +15,9 @@ export const RegisterContainer = styled.div`
 `;
 
 export const RegisterHeader = styled.div`
+  text-align: center;
+  margin-top: 1.5rem;
+
   & > h4 {
     color: #e1e9f1;
     font-weight: 600;

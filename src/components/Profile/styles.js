@@ -16,7 +16,7 @@ export const ProfileHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
+
   & > h4 {
     color: #e1e9f1;
     font-weight: 600;
@@ -25,7 +25,6 @@ export const ProfileHeader = styled.div`
   }
 
   & > button {
-
   }
 `;
 
@@ -94,13 +93,20 @@ export const AccordionCardBody = styled.div`
 
 export const AboutItem = styled.div`
   margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
 
-  & > p {
+  & svg {
+    font-size: 20px;
+    margin-right: 12px;
+  }
+
+  & p {
     color: #9aa1b9;
     margin-bottom: 0.25rem;
   }
 
-  & > h5 {
+  & h5 {
     font-size: 14px;
     font-weight: 600;
     color: #e1e9f1;

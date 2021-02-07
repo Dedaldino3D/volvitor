@@ -26,8 +26,21 @@ export default createGlobalStyle`
     font-weight: 400;
     line-height: 1.5;
     color: #a6b0cf;
-    text-align: left;
-    background-color: #303841;
+		text-align: left;
+		height: 100vh;
+		background-color: #303841;
+		
+
+		::-webkit-scrollbar{
+			width: 12px;
+			cursor: pointer;
+		}
+
+		::-webkit-scrollbar-trace,
+		::-webkit-scrollbar-thumb {
+			border-radius: 8px;
+			background-color: #264653;
+		}
   }
 
   html {
@@ -37,7 +50,9 @@ export default createGlobalStyle`
   }
 
   :root {
-    --blue: #7269ef;
+		--chat-bg: #262e35;
+		--blue: #7269ef;
+		--blue-bold: #073b4c;
     --indigo: #564ab1;
     --purple: #8e4aec;
     --red: #ef476f;
@@ -65,6 +80,8 @@ export default createGlobalStyle`
     --breakpoint-xl: 1200px;
     --bg: #eff5f5;
 		--text: #505763;
+		--text-light: #eff2f7;
+		--message-incoming-bg: #36404a;
 		--orange-link: rgb(255, 166, 0);
 		--white: #fff;
 		--white-100: #fafafa;

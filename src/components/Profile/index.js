@@ -1,3 +1,7 @@
+import { MdMoreVert } from "react-icons/md";
+import { BsGeoAlt, BsClockFill } from "react-icons/bs";
+import { FaRegEnvelope } from "react-icons/fa";
+
 import {
   ProfileContainer,
   ProfileHeader,
@@ -17,7 +21,7 @@ const Profile = (props) => {
     <ProfileContainer>
       <ProfileHeader>
         <h4>My Profile</h4>
-        <button>More</button>
+        <MdMoreVert />
       </ProfileHeader>
       <ProfileUserHeader>
         <div style={{ marginBottom: "1.5rem" }}>
@@ -30,8 +34,8 @@ const Profile = (props) => {
       </ProfileUserHeader>
       <ProfileDescription>
         <p>
-          Working as a full time software engineer is very hard, you need to
-          manage your time....
+          If several languages coalesce, the grammar of the resulting language
+          is more simple and regular than that of the individual.
         </p>
         <ProfileAccordion />
       </ProfileDescription>
@@ -51,16 +55,25 @@ const ProfileAccordion = (props) => {
         {/* conditinal render below */}
         <AccordionCardBody>
           <AboutItem>
-            <p>Email</p>
-            <h5>dedaldinoantonioo@gmail.com</h5>
+            <FaRegEnvelope />
+            <div>
+              <p>Email</p>
+              <h5>dedaldinoantonioo@gmail.com</h5>
+            </div>
           </AboutItem>
           <AboutItem>
-            <p>Time</p>
-            <h5>12 AM</h5>
+            <BsClockFill />
+            <div>
+              <p>Time</p>
+              <h5>12 AM</h5>
+            </div>
           </AboutItem>
           <AboutItem>
-            <p>Location</p>
-            <h5>Luanda, Angola</h5>
+            <BsGeoAlt />
+            <div>
+              <p>Location</p>
+              <h5>Luanda, Angola</h5>
+            </div>
           </AboutItem>
         </AccordionCardBody>
       </AccordionCard>

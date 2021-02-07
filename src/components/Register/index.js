@@ -1,5 +1,8 @@
-import { FaUser } from "react-icons/fa";
+import { useState } from "react";
+import { FaRegUser, FaRegEnvelope, FaLock } from "react-icons/fa";
 
+import Logo from "../layout/Logo";
+import Input from "../layout/Input";
 import {
   RegisterContainer,
   RegisterHeader,
@@ -7,7 +10,6 @@ import {
   CardBody,
   Button,
 } from "./styles";
-import Input from "../layout/Input";
 
 const Register = (props) => {
   const [state, setState] = useState({
@@ -32,6 +34,7 @@ const Register = (props) => {
 
   return (
     <RegisterContainer>
+      <Logo />
       <RegisterHeader>
         <h4>Sign up</h4>
         <p>Get a icaller account now.</p>
@@ -43,25 +46,31 @@ const Register = (props) => {
               placeholder="Enter username"
               type="text"
               onChange={handleChange}
-              icon={<FaUser />}
+              icon={<FaRegUser />}
+              required
             />
             <Input
               placeholder="Enter email"
               type="email"
               onChange={handleChange}
-              // icon={}
+              icon={<FaRegEnvelope />}
+              required
             />
             <Input
               placeholder="Enter password"
-              type="password1"
+              type="password"
+              name="password1"
               onChange={handleChange}
-              // icon={}
+              icon={<FaLock />}
+              required
             />
             <Input
               placeholder="Confirm password"
-              type="password2"
+              type="password"
+              name="password2"
               onChange={handleChange}
-              // icon={}
+              icon={<FaLock />}
+              required
             />
             <Button type="submit">Sign up</Button>
           </form>

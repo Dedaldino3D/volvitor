@@ -23,56 +23,11 @@ export const ChatHeader = styled.div`
   }
 `;
 
-export const ChatSearch = styled.div`
-  margin-bottom: 1rem;
-  border-radius: 0.4rem;
-  background-color: #36404a;
-
-  .input-group {
-    position: relative;
-    display: flex;
-    align-items: stretch;
-    width: 100%;
-  }
-
-  .input-group-prepend {
-    display: flex;
-    margin-right: -1px;
-
-    button {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      padding: 0.5rem 1rem;
-      line-height: 1.5;
-      font-size: 0.875rem;
-      border-radius: 0.4rem;
-      position: relative;
-      z-index: 2;
-      color: #9aa1b9;
-      padding-right: 0.25rem;
-      font-weight: 400;
-
-      display: inline-block;
-      text-align: center;
-      vertical-align: middle;
-      user-select: none;
-      background-color: transparent;
-      border: 1px solid transparent;
-      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-
-      :not(:disabled) {
-        cursor: pointer;
-      }
-    }
-  }
-`;
-
 export const OnlineUsers = styled.div`
   padding: 0 1.5rem 1.5rem;
   display: flex;
   flex-flow: row nowrap;
-  overflow-x: auto;
+  overflow-x: hidden;
 `;
 
 export const OnlineUserItem = styled.div`
@@ -125,7 +80,7 @@ export const RecentChatList = styled.div`
   .chat-message-list {
     max-height: 100%;
     height: calc(100vh - 280px);
-    overflow: auto;
+    overflow-y: auto;
     position: relative;
     flex-direction: column;
     flex-wrap: wrap;
@@ -133,19 +88,20 @@ export const RecentChatList = styled.div`
     align-content: flex-start;
     align-items: flex-start;
 
-    -webkit-scrollbar {
-      width: 12px;
-      border-radius: 8px;
+    ::-webkit-scrollbar {
+      width: 8px;
+      cursor: pointer;
     }
 
-    -webkit-scrollbar:hover {
-      background-color: rgba(0, 0, 0, 0.3);
+    ::-webkit-scrollbar:hover {
+      background-color: rgba(0, 0, 0, 0.2);
       transition: all 0.4s;
     }
 
-    -webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.6);
-      cursor: pointer;
+    ::-webkit-scrollbar-thumb,
+    ::-webkit-scrollbar-trace {
+      background-color: var(--message-incoming-bg);
+      border-radius: 8px;
     }
 
     .active {
@@ -181,7 +137,8 @@ export const ChatMessageItem = styled.li`
     flex: 1 1;
 
     & > h5 {
-      font-size: 16px;
+      font-size: 15px;
+      line-height: 1.2;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
