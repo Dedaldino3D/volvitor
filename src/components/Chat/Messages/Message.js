@@ -1,5 +1,4 @@
-import { string } from "prop-types";
-
+import { timeSince } from "../../../utils/helpers";
 import Avatar from "../../Avatar";
 import {
   MessageContainer,
