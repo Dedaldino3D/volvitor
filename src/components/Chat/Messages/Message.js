@@ -1,4 +1,4 @@
-import { timeSince } from "../../../utils/helpers";
+// import { timeSince } from "../../../utils/helpers";
 import Avatar from "../../Avatar";
 import {
   MessageContainer,
@@ -7,17 +7,22 @@ import {
   MessageChatState,
 } from "./styles";
 
+function timeSince() {
+  return `${new Date()}`;
+}
+
 function Message({ message }) {
   return (
     <MessageContainer
       direction={message.direction === "incoming" ? "received" : "sended"}
     >
       {message.direction === "incoming" && (
-        <Avatar tam={35} alt="dedaldino" online={true} />
+        <Avatar width={30} alt="dedaldino" online={true} />
       )}
       <div>
         <MessageTimestamp direction={message.direction}>
-          {timeSince(message.timestamp)}
+          {/* {timeSince(message.timestamp)} */}
+          {message.timestamp}
         </MessageTimestamp>
         {message.body && message.body !== "" && (
           <MessageContent direction={message.direction}>

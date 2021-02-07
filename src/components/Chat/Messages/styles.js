@@ -1,10 +1,22 @@
-import styled from "styed-components";
+import styled, { css } from "styled-components";
 
 export const MessagesContainer = styled.div`
   max-height: 100%;
   height: calc(100vh - 184px);
   position: relative;
   flex-direction: column;
+  overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    cursor: pointer;
+  }
+
+  ::-webkit-scrollbar-trace,
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+  }
 
   @media (min-width: 992px) {
     padding: 1.5rem;
@@ -30,22 +42,27 @@ export const MessageTimestamp = styled.span`
 
 export const MessageContent = styled.div`
   position: relative;
-  padding: 5px 15px;
+  padding: 12px 20px;
   word-break: break-word;
   max-width: max-content;
   white-space: break-all;
-  border-radius: 20px;
+  border-radius: 15px 15px 0 15px;
   color: var(--white);
+  font-size: 14px;
 
   ${(props) =>
     props.direction === "incoming"
       ? css`
           margin: 0 auto 0 0;
-          background: #fefefe;
+          background: var(--blue-bold);
+          color: var(--text-light);
+          border-radius: 15px;
+          border-bottom-left-radius: 0;
         `
       : css`
           margin: 0 0 0 auto;
-          background: var(--green);
+          background-color: var(--message-incoming-bg);
+          color: var(--text-light);
         `}
 `;
 
@@ -55,6 +72,7 @@ export const MessageContainer = styled.li`
   clear: both;
   float: left;
   padding: 5px;
+  font-weight: 600;
 
   & > :last-child {
     flex: 1 2 auto;
