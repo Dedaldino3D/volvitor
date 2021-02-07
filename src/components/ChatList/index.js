@@ -1,32 +1,26 @@
+import { FaSearch } from "react-icons/fa";
+
 import Avatar from "../Avatar";
-import { Input } from "../layout/Input";
+import Input from "../layout/Input";
 import {
   ChatListContainer,
   ChatMessageItem,
   RecentChatList,
   ChatHeader,
-  ChatSearch as ChatSearchContainer,
   OnlineUsers,
   OnlineUserItem,
 } from "./styles";
-
-export const ChatSearch = (props) => {
-  return (
-    <ChatSearchContainer>
-      <div className="input-group-prepend">
-        <button type="button">{/* FaSearch here */}Search</button>
-        <Input placeholder="Search messages or users" type="text" />
-      </div>
-    </ChatSearchContainer>
-  );
-};
 
 const ChatList = (props) => {
   return (
     <ChatListContainer>
       <ChatHeader>
         <h4>Chats</h4>
-        <ChatSearch />
+        <Input
+          type="text"
+          placeholder="Search for messages or users"
+          icon={<FaSearch />}
+        />
         <OnlineUsers>
           {/* Alice carousel */}
           <OnlineUserItem>
