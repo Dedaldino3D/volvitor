@@ -6,23 +6,26 @@ import Settings from "../components/Settings";
 
 export const routes = [
   {
-    path: "/:userId/profile",
+    path: "/",
+    exact: true,
+    main: () => <ChatList />,
+    second: () => <Chat />,
+  },
+  {
+    path: "/profile",
     main: () => <Profile />,
     second: () => <Chat />,
   },
   {
-    path: "/:userId/settings",
+    path: "/settings",
     main: () => <Settings />,
     second: () => <Chat />,
   },
   {
-    path: "/:userId/groups",
+    path: "/groups",
     main: () => <Groups />,
     second: () => <Chat />,
   },
-  {
-    path: "/:userId",
-    main: () => <ChatList />,
-    second: () => <Chat />,
-  },
 ];
+
+export default routes;
