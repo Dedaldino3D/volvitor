@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { FaRegUser, FaRegEnvelope, FaLock } from "react-icons/fa";
 
 import Logo from "../layout/Logo";
@@ -77,7 +78,10 @@ const Register = (props) => {
         </CardBody>
         <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
           <p>
-            By registering you agree with our <a href="#">Terms of use</a>
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
+          <p>
+            By registering you agree with our <Link to="#">Terms of use</Link>
           </p>
         </div>
       </Card>
