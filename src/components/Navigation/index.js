@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 import { FaRegUser, FaRegAddressBook, FaRegBell } from "react-icons/fa";
 import { BsGear, BsChatDots, BsPeople } from "react-icons/bs";
 
@@ -15,20 +16,28 @@ const HeaderContainer = styled.nav`
   justify-content: space-between;
   z-index: 9;
   box-shadow: 0 2px 4px rgb(15 34 58 / 12%);
+  overflow: hidden;
 
   @media (max-width: 991px) {
-    flex-direction: row;
+    flex: row nowrap;;
     position: fixed;
     bottom: 0;
+    min-height: 60px;
+    max-height: 60px;
+    height: 60px;
+    width: 100vw;
+    min-width: 100vw;
+    
+    .nav-logo, .nav-profile, .nav-settings{
+      display: none;
+    }
   }
 
   @media (min-width: 992px) {
     margin-right: 0.25rem !important;
-  }
-
-  @media (min-width: 992px) {
     flex-direction: column !important;
   }
+}
 `;
 
 const NavigationList = styled.ul`
@@ -44,7 +53,7 @@ const NavigationList = styled.ul`
   padding-left: 0;
   justify-content: space-around;
 
-  .active {
+  .active-navigation {
     background-color: #3e4a56;
   }
 `;
@@ -70,35 +79,53 @@ const NavigationItem = styled.li`
 const Navigation = (props) => {
   return (
     <HeaderContainer>
-      <NavigationList>
+      <NavigationList className="nav-logo">
         <NavigationItem>
           <Logo />
         </NavigationItem>
       </NavigationList>
       <NavigationList>
-        <NavigationItem>
-          <FaRegUser />
-        </NavigationItem>
-        <NavigationItem className="active">
-          <BsChatDots />
-        </NavigationItem>
-        <NavigationItem>
-          <BsPeople />
-        </NavigationItem>
-        <NavigationItem>
-          <FaRegAddressBook />
-        </NavigationItem>
-        <NavigationItem>
-          <FaRegBell />
-        </NavigationItem>
-        <NavigationItem>
-          <BsGear />
-        </NavigationItem>
+        <NavLink
+          to="/profile"
+          className="nav-profile"
+          activeClassName="active-navigation"
+        >
+          <NavigationItem>
+            <FaRegUser />
+          </NavigationItem>
+        </NavLink>
+        <NavLink exact to="/" activeClassName="active-navigation">
+          <NavigationItem>
+            <BsChatDots />
+          </NavigationItem>
+        </NavLink>
+        <NavLink to="/groups" activeClassName="active-navigation">
+          <NavigationItem>
+            <BsPeople />
+          </NavigationItem>
+        </NavLink>
+        <NavLink to="/contacts" activeClassName="active-navigation">
+          <NavigationItem>
+            <FaRegAddressBook />
+          </NavigationItem>
+        </NavLink>
+        <NavLink to="/notifications" activeClassName="active-navigation">
+          <NavigationItem>
+            <FaRegBell />
+          </NavigationItem>
+        </NavLink>
+        <NavLink to="/settings" activeClassName="active-navigation">
+          <NavigationItem>
+            <BsGear />
+          </NavigationItem>
+        </NavLink>
       </NavigationList>
       <NavigationList>
-        <NavigationItem>
-          <Avatar width={35} />
-        </NavigationItem>
+        <NavLink to="/info" activeClassName="active-navigation">
+          <NavigationItem>
+            <Avatar width={30} />
+          </NavigationItem>
+        </NavLink>
       </NavigationList>
     </HeaderContainer>
   );
