@@ -81,3 +81,10 @@ export const Button = styled.button`
     cursor: pointer;
   }
 `;
+
+export const ForgotPass = styled.p`
+  text-align: right;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 5px;
+`;
