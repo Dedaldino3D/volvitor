@@ -16,6 +16,12 @@ const HeaderContainer = styled.nav`
   z-index: 9;
   box-shadow: 0 2px 4px rgb(15 34 58 / 12%);
 
+  @media (max-width: 991px) {
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+  }
+
   @media (min-width: 992px) {
     margin-right: 0.25rem !important;
   }
