@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { BsPeople } from 'react-icons/bs'
+import { BsPeople } from "react-icons/bs";
+import { FaSearch } from "react-icons/fa";
 
 import Avatar from "../Avatar";
-import { ChatSearch } from "../ChatList";
+import Input from "../layout/Input";
 import { ChatMessageItem, ChatHeader } from "../ChatList/styles";
 
 const GroupsContainer = styled.div`
@@ -22,9 +23,13 @@ const Groups = (props) => {
     <GroupsContainer>
       <ChatHeader>
         <h4>Groups</h4>
-        <BsPeople/>
+        <BsPeople />
+        <Input
+          type="text"
+          placeholder="Search for messages or users"
+          icon={<FaSearch />}
+        />
       </ChatHeader>
-      <ChatSearch />
       <GroupList>
         <ul>
           <ChatMessageItem>
