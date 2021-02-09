@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { bool } from "prop-types";
+import { Link, Redirect, useLocation } from "react-router-dom";
 import { FaRegEnvelope, FaLock } from "react-icons/fa";
 
 import Logo from "../layout/Logo";
@@ -18,6 +19,7 @@ const Login = (props) => {
     email: "",
     password: "",
   });
+  const location = useLocation();
 
   const handleChange = (e) => {
     setState((cs) => ({
@@ -31,6 +33,14 @@ const Login = (props) => {
     // TODO: send values to API
     console.log("values:", state);
   };
+
+  const { from } = location.state || {
+    from: { pathname: "/home" },
+  };
+
+  if (props.isAuthenticated) {
+    return <Redirect to={from} />;
+  }
 
   return (
     <RegisterContainer>
@@ -71,6 +81,14 @@ const Login = (props) => {
       </Card>
     </RegisterContainer>
   );
+};
+
+Login.propTypes = {
+  isAuthenticated: bool.isRequired,
+};
+
+Login.propTypes = {
+  isAuthenticated: false,
 };
 
 export default Login;
