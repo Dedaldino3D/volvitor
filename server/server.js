@@ -1,9 +1,10 @@
 import { v4 as uuidV4 } from "uuid";
+
 const express = require("express");
 const http = require("http");
 const cors = require("cors");
 const socketIo = require("socket.io");
-
+const mongoose = require("mongoose");
 const session = require("express-session");
 
 const PORT = process.env.PORT || 8000;
@@ -25,6 +26,17 @@ app.use(
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// start database connection
+mongoose
+  .connect("mongodb://localhost/volvitor", {
+    useMongoClient: true,
+  })
+  .then(() => {
+    console.log("Database connected");
+  })
+  .catch((err) => {
+    console.log("Error when connecting to database, error: ", err);
+  });
 
 app.get("/join", (req, res) => {
   res.send({ link: uuidV4() });
