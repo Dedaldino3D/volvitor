@@ -3,6 +3,7 @@ import { FaRegUser, FaVideo } from "react-icons/fa";
 import { MdMoreVert } from "react-icons/md";
 
 import Avatar from "../Avatar";
+import Dropdown, { DropdownItem } from "../Dropdown";
 
 const ChatHeaderContainer = styled.div`
   border-bottom: 1px solid #36404a;
@@ -103,9 +104,12 @@ const ChatHeader = (props) => {
               </UserChatButton>
             </li>
             <li style={{ display: "inline-block" }}>
-              <UserChatButton>
-                <MdMoreVert />
-              </UserChatButton>
+              <Dropdown trigger={MdMoreVert}>
+                <DropdownItem>Edit Profile</DropdownItem>
+                <DropdownItem>Change username</DropdownItem>
+                <DropdownItem>Change email</DropdownItem>
+                <DropdownItem>List blocked users</DropdownItem>
+              </Dropdown>
             </li>
           </ul>
         </ChatMoreInfo>
