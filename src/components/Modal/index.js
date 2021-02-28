@@ -6,13 +6,31 @@ import React, {
   useCallback,
 } from "react";
 import { createPortal } from "react-dom";
+import { FaTimes } from "react-icons/fa";
 
-import "./styles.css";
+import {
+  Container,
+  ModalContainer,
+  ModalBody,
+  ModalFooter,
+  CloseModal,
+  ModalHeader,
+} from "./styles";
+
+// import "./styles.css";
 
 const modalElement = document.getElementById("modal-root");
 
 function Modal(
-  { isVisible, title, children, footer, fade = false, defaultOpened = false },
+  {
+    isVisible,
+    title,
+    children,
+    footer,
+    onClose,
+    fade = false,
+    defaultOpened = false,
+  },
   ref
 ) {
   const [isOpen, setIsOpen] = useState(defaultOpened);
@@ -30,9 +48,9 @@ function Modal(
 
   const handleEscape = useCallback(
     (event) => {
-      if (event.keyCode === 27) close();
+      if (event.keyCode === 27) onClose();
     },
-    [close]
+    [onClose]
   );
 
   useEffect(() => {
@@ -44,26 +62,18 @@ function Modal(
 
   return createPortal(
     isOpen || isVisible ? (
-      <div className="modal-container">
-        <div className={`modal ${fade ? "modal-fade" : ""}`}>
-          <div
-            className="modal-header"
-            style={title && { borderBottom: "1px solid #dadcdd" }}
-          >
+      <Container>
+        <ModalContainer>
+          <ModalHeader title={title}>
             {title && <h3>{title}</h3>}
-            <span
-              role="button"
-              aria-label="close"
-              className="modal-closer"
-              onClick={close}
-            >
-              x
-            </span>
-          </div>
-          <div className="modal-body">{children}</div>
-          <div className="modal-footer">{footer}</div>
-        </div>
-      </div>
+            <CloseModal onClick={onClose}>
+              <FaTimes />
+            </CloseModal>
+          </ModalHeader>
+          <ModalBody>{children}</ModalBody>
+          {footer && <ModalFooter>{footer}</ModalFooter>}
+        </ModalContainer>
+      </Container>
     ) : null,
     modalElement
   );
