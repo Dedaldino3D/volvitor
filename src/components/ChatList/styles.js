@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const ChatListContainer = styled.div`
   height: 100vh;
   background-color: #303841;
+
   @media (min-width: 992px) {
     margin-right: 0.25rem;
     min-width: 380px;
@@ -11,7 +12,7 @@ export const ChatListContainer = styled.div`
 `;
 
 export const ChatHeader = styled.div`
-  padding: 1.5rem 1.5rem 0;
+  padding: 1.25rem 1.25rem 0;
 
   & > h4 {
     font-weight: 600;
@@ -66,7 +67,7 @@ export const OnlineUserItem = styled.div`
 `;
 
 export const RecentChatList = styled.div`
-  padding: 0 0.5rem;
+  padding: 0 0 0 0.5rem;
 
   & > h5 {
     font-size: 16px;

@@ -1,8 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 
-import "./styles";
+import "./styles.css";
 
-const Dropdown = (props) => {
+export const DropdownItem = ({ children }) => (
+  <li className="dropdown-item">{children}</li>
+);
+
+export const Dropdown = ({ children, trigger: ButtonComponent }) => {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef(null);
 
@@ -19,22 +23,19 @@ const Dropdown = (props) => {
   };
 
   const handleClickOutside = (event) => {
-    if (ref.current && !ref.curret.contains(event.target)) {
+    if (ref.current && !ref.current.contains(event.target)) {
       setIsOpen(false);
     }
   };
 
   return (
     <div className="drop-container" ref={ref}>
-      <button onClick={handleButtonClick}>=</button>
-      {/* {props.trigger} */}
-      <div className="dropdown">
-        <ul>
-          <li>List 1</li>
-          <li>List 2</li>
-          <li>List 3</li>
-        </ul>
-      </div>
+      <ButtonComponent onClick={handleButtonClick} />
+      {isOpen && (
+        <div className="dropdown">
+          <ul>{children}</ul>
+        </div>
+      )}
     </div>
   );
 };
