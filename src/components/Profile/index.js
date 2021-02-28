@@ -15,13 +15,19 @@ import {
   UserStatus,
 } from "./styles";
 import Avatar, { UserStatus as UserStatusAvatar } from "../Avatar";
+import Dropdown, { DropdownItem } from "../Dropdown";
 
 const Profile = (props) => {
   return (
     <ProfileContainer>
       <ProfileHeader>
         <h4>My Profile</h4>
-        <MdMoreVert />
+        <Dropdown trigger={MdMoreVert}>
+          <DropdownItem>Edit Profile</DropdownItem>
+          <DropdownItem>Change username</DropdownItem>
+          <DropdownItem>Change email</DropdownItem>
+          <DropdownItem>List blocked users</DropdownItem>
+        </Dropdown>
       </ProfileHeader>
       <ProfileUserHeader>
         <div style={{ marginBottom: "1.5rem" }}>

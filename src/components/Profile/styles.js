@@ -3,11 +3,13 @@ import styled from "styled-components";
 export const ProfileContainer = styled.div`
   height: 100vh;
   background-color: #303841;
+  padding-bottom: 100px;
 
   @media (min-width: 992px) {
     margin-right: 0.25rem;
     min-width: 380px;
     max-width: 380px;
+    padding-bottom: 0;
   }
 `;
 
