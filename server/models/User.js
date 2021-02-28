@@ -1,28 +1,29 @@
 const mongoose = require("./instance");
 
-const UserSchema = mongoose.Schema({
-  username: {
-    type: String,
-    require: true,
+const userSchema = mongoose.Schema(
+  {
+    username: {
+      type: String,
+      minLenght: 2,
+      require: true,
+    },
+    email: {
+      type: String,
+      require: true,
+    },
+    password: {
+      type: String,
+      minLenght: 8,
+      require: true,
+    },
+    lastLogin: {
+      type: Date,
+    },
   },
-  email: {
-    type: String,
-    require: true,
-  },
-  password: {
-    type: String,
-    require: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now(),
-  },
-  lastLogin: {
-    type: Date,
-  },
-});
+  { timestamps: true }
+);
 
-mongoose.model("users", UserSchema);
+mongoose.model("User", userSchema);
 
 // const User = mongoose.model("users");
 
