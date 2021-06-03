@@ -1,7 +1,12 @@
-const mongoose = require("./instance");
+import mongoose from "./instance";
+import { v4 as uuidv4 } from "uuid";
 
 const userSchema = mongoose.Schema(
   {
+    _id: {
+      type: String,
+      default: () => uuidv4().replace(/-/g, ""),
+    },
     username: {
       type: String,
       minLenght: 2,
@@ -20,15 +25,7 @@ const userSchema = mongoose.Schema(
       type: Date,
     },
   },
-  { timestamps: true }
+  { timestamps: true, collection: "users" }
 );
 
-mongoose.model("User", userSchema);
-
-// const User = mongoose.model("users");
-
-// new User({
-//   ...fields,
-// }).save().then().catch();
-
-module.exports = UserSchema;
+export default mongoose.model("User", userSchema);

@@ -1,5 +1,6 @@
 import { v4 as uuidV4 } from "uuid";
-// import { joinedRoomListeningEvents } from "./rooms";
+/** MongoDB connection setup */
+import "./config/mongo";
 import { userSchema } from "./models/User";
 import { groupSchema, groupInboxSchema } from "./models/Group";
 import { messageSchema, groupMessageSchema } from "./models/Message";
@@ -17,7 +18,11 @@ const app = express();
 const server = http.createServer(app);
 export const io = socketIo(server);
 
+// app routes imports
 const users = require("./routes/users");
+const rooms = require("./routes/rooms");
+
+// app models imports
 const User = mongoose.model("User", userSchema);
 const Group = mongoose.model("Group", groupSchema);
 const Message = mongoose.model("Message", messageSchema);
@@ -36,23 +41,21 @@ app.use(
 );
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-// start database connection
-mongoose
-  .connect("mongodb://localhost/volvitor", {
-    useMongoClient: true,
-  })
-  .then(() => {
-    console.log("Database connected");
-  })
-  .catch((err) => {
-    console.log("Error when connecting to database, error: ", err);
-  });
+app.use(express.urlencoded({ extended: false }));
 
 // app routes
 app.use("/users", users);
+app.use("/rooms", rooms);
 
 // -------------------------------
+
+/** catch 404 and forward to error handler */
+app.use("*", (req, res) => {
+  return res.status(404).json({
+    success: false,
+    message: "API endpoint doesn't exist",
+  });
+});
 
 app.get("/join", (req, res) => {
   res.send({ link: uuidV4() });
@@ -84,6 +87,11 @@ io.on("connection", (socket) => {
     socket.on("disconnected", () => {
       socket.to(roomId).emit("userDisconected", userId);
     });
+  });
+
+  // leaving or muting a room
+  socket.on("group:leave", (roomId) => {
+    socket.leave(roomId);
   });
 
   // listing to incoming group messages
